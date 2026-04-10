@@ -7,7 +7,7 @@ A simple, sleek, and responsive **To-Do List** application to help you manage ta
 
 ## 🚀 [Live Demo](#) 
 
-Check out the live version of this project [here](https://nilesh0509.github.io/ToDoList/) .
+Check out the live version of this project [here](https://nilesh0509.github.io/To_Do_List/) .
 
 ## 📸 Preview
 
@@ -46,13 +46,13 @@ Make sure you have a web browser installed (Chrome, Firefox, etc.).
 1. **Clone this repository** to your local machine:
 
     ```bash
-    git clone https://github.com/nilesh0509/ToDoList.git
+    git clone https://github.com/nilesh0509/To_Do_List.git
     ```
 
 2. **Navigate to the project directory**:
 
     ```bash
-    cd ToDoList
+    cd To_Do_List
     ```
 
 3. **Open the `index.html` file** in your favorite web browser:
