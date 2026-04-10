@@ -11,7 +11,7 @@ Check out the live version of this project [here](https://nilesh0509.github.io/T
 
 ## 📸 Preview
 
-![Todo List Preview](https://github.com/user-attachments/assets/cbeb8118-e629-4654-b177-aa0a14cba014)  
+![Todo List Preview](https://github.com/user-attachments/assets/6510bf03-53fc-43b2-963b-61d89579473c)  
 *Preview of the To-Do List in action*
 
 ---
@@ -70,9 +70,7 @@ Make sure you have a web browser installed (Chrome, Firefox, etc.).
 
 ```bash
 .
-├── css/
-│   └── style.css        # Main styles for the app
-├── script/
-│   └── script.js        # JavaScript for task functionality
-├── index.html           # The core HTML file
-└── README.md            # Project documentation (you are here!)
+├── index.html       # The core HTML file
+├── script.js        # JavaScript for task functionality
+├── style.css        # Main styles for the app
+└── README.md        # Project documentation (you are here!)
