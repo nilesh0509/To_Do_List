@@ -1,0 +1,333 @@
+/* ---------- GLOBAL RESET & BASE ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, 'Segoe UI', 'Inter', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+}
+
+body {
+    background: linear-gradient(145deg, #ccddf7 0%, #95c3ff 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+}
+
+/* main card container */
+.todo-card {
+    max-width: 650px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(0px);
+    border-radius: 2rem;
+    box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25), 0 8px 18px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: transform 0.2s ease;
+}
+
+.todo-card:hover {
+    transform: scale(1.01);
+}
+
+/* header area */
+.todo-header {
+    background: #ffffffdd;
+    padding: 1.8rem 2rem 1rem 2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.todo-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #1f2b3c, #2c3e66);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: -0.3px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.todo-header h1::before {
+    content: "✓";
+    background: #2c3e66;
+    background-clip: unset;
+    -webkit-background-clip: unset;
+    color: white;
+    font-size: 1.4rem;
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(145deg, #2c3e66, #1a2a48);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* input row */
+.input-group {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+#taskInput {
+    flex: 1;
+    padding: 0.9rem 1.2rem;
+    border: 2px solid #e2edf2;
+    border-radius: 2rem;
+    font-size: 1rem;
+    background: #fefefe;
+    transition: all 0.2s;
+    outline: none;
+    font-weight: 500;
+}
+
+#taskInput:focus {
+    border-color: #2c3e66;
+    box-shadow: 0 0 0 3px rgba(44, 62, 102, 0.2);
+}
+
+#addBtn {
+    background: #2c3e66;
+    border: none;
+    padding: 0 1.8rem;
+    border-radius: 2rem;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+#addBtn:hover {
+    background: #1f2e4e;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+}
+
+/* filter bar */
+.filter-bar {
+    display: flex;
+    gap: 0.6rem;
+    margin: 1.5rem 0 1rem 0;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: transparent;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #4a5568;
+    background: #f1f5f9;
+}
+
+.filter-btn.active {
+    background: #2c3e66;
+    color: white;
+    box-shadow: 0 4px 10px rgba(44, 62, 102, 0.3);
+}
+
+.filter-btn:not(.active):hover {
+    background: #e2e8f0;
+    transform: translateY(-1px);
+}
+
+/* task counter */
+.task-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1rem;
+    padding: 0 0.2rem;
+}
+
+.pending-counter {
+    font-size: 0.85rem;
+    background: #eef2ff;
+    padding: 0.3rem 0.9rem;
+    border-radius: 2rem;
+    color: #1e293b;
+    font-weight: 600;
+}
+
+/* task list container */
+.tasks-container {
+    padding: 0 2rem 2rem 2rem;
+}
+
+#taskList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    max-height: 460px;
+    overflow-y: auto;
+    padding-right: 0.2rem;
+}
+
+/* custom scrollbar */
+#taskList::-webkit-scrollbar {
+    width: 5px;
+}
+
+#taskList::-webkit-scrollbar-track {
+    background: #eef2ff;
+    border-radius: 10px;
+}
+
+#taskList::-webkit-scrollbar-thumb {
+    background: #b9c3db;
+    border-radius: 10px;
+}
+
+/* task item */
+.task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    padding: 0.9rem 1.2rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    transition: all 0.2s ease;
+    border: 1px solid #edf2f7;
+    cursor: pointer;
+    animation: fadeSlideIn 0.2s ease-out forwards;
+}
+
+.task-item:hover {
+    background: #fafcff;
+    border-color: #cbd5e1;
+    transform: translateX(4px);
+}
+
+/* completed task style */
+.task-item.completed .task-text {
+    text-decoration: line-through;
+    color: #94a3b8;
+}
+
+.task-item.completed {
+    background: #f8fafc;
+    opacity: 0.85;
+}
+
+.task-text {
+    flex: 1;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #0f172a;
+    word-break: break-word;
+    padding-right: 0.8rem;
+    transition: all 0.2s;
+}
+
+/* delete button */
+.delete-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: #cbd5e1;
+    transition: all 0.2s;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.delete-btn:hover {
+    color: #ef4444;
+    background: #fee2e2;
+    transform: scale(1.05);
+}
+
+/* animations */
+@keyframes fadeSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.task-remove-animation {
+    animation: fadeOutScale 0.2s forwards !important;
+    pointer-events: none;
+}
+
+@keyframes fadeOutScale {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.95);
+        display: none;
+    }
+}
+
+/* error message */
+.error-msg {
+    color: #e11d48;
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+    margin-left: 0.8rem;
+    font-weight: 500;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.error-msg.show {
+    opacity: 1;
+}
+
+/* empty state */
+.empty-placeholder {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    color: #94a3b8;
+    font-weight: 500;
+    background: #f8fafc;
+    border-radius: 1.5rem;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 500px) {
+    .todo-card {
+        border-radius: 1.5rem;
+    }
+
+    .todo-header,
+    .tasks-container {
+        padding-left: 1.2rem;
+        padding-right: 1.2rem;
+    }
+
+    .task-item {
+        padding: 0.7rem 1rem;
+    }
+}

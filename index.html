@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>TodoList</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="todo-card">
+  <div class="todo-header">
+    <h1>TaskNova</h1>
+    <div class="input-group">
+      <input type="text" id="taskInput" placeholder="Write a new task ..." autocomplete="off">
+      <button id="addBtn">+ Add</button>
+    </div>
+    <div class="error-msg" id="errorMsg">⛔ Task cannot be empty!</div>
+  </div>
+
+  <div class="tasks-container">
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">📋 All</button>
+      <button class="filter-btn" data-filter="pending">🕒 Pending</button>
+      <button class="filter-btn" data-filter="completed">✅ Completed</button>
+    </div>
+    <div class="task-stats">
+      <span class="pending-counter" id="taskCounter">📌 0 pending</span>
+      <span style="font-size: 0.7rem; color:#6c757d;">click task to toggle ✔</span>
+    </div>
+    <ul id="taskList"></ul>
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
